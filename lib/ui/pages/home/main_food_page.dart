@@ -17,8 +17,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
     // print("current height is :"+ MediaQuery.of(context).size.height.toString());
-    print("height using getx " + Get.height.toString());
-    print("Width using getx " + Get.width.toString());
+    print("height using getx ${Get.height}");
+    print("Width using getx ${Get.width}");
     return Scaffold(
       body: SafeArea(
         child: Column(

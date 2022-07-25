@@ -3,13 +3,13 @@ import 'package:all_in_one_d_best_tech/utils/constants.dart';
 import 'package:get/get.dart';
 
 /// when u load data from internet use GetService
-class PopularProductRepo extends GetxService {
+class RecommendedProductRepo extends GetxService {
   final ApiClient apiClient;
 
-  PopularProductRepo({required this.apiClient});
+  RecommendedProductRepo({required this.apiClient});
 
-  Future<Response> getPopularProductList() async {
+  Future<Response> getRecommendedProductList() async {
     return await apiClient
-        .get(Constants.POPULAR_PRODUCT_URI);
+        .get(Constants.RECOMMENDED_PRODUCT_URI);
   }
 }
