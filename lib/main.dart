@@ -1,3 +1,4 @@
+import 'package:all_in_one_d_best_tech/core/controllers/cart_controller.dart';
 import 'package:all_in_one_d_best_tech/core/controllers/popular_product_controller.dart';
 import 'package:all_in_one_d_best_tech/core/controllers/recommended_product_controller.dart';
 import 'package:all_in_one_d_best_tech/routes/route_helper.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
     Get.find<RecommendedProductController>().getRecommendedProductList();
+    Get.find<CartController>();
     return GetMaterialApp(
       enableLog: true,
       debugShowCheckedModeBanner: false,
