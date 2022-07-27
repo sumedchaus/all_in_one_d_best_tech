@@ -50,38 +50,39 @@ class PopularFoodDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
+                  AppIcon(
                       onTap: () {
                         Get.back();
                       },
-                      child: const AppIcon(icon: Icons.arrow_back_ios)),
+                      icon: Icons.arrow_back_ios),
                   GetBuilder<PopularProductController>(builder: (controller) {
                     return Stack(
                       children: [
-                        AppIcon(icon: Icons.shopping_cart),
+                        AppIcon(icon: Icons.shopping_cart, onTap: () {}),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(
-                          right: 0,
-                              top:0,
-                              child: AppIcon(
+                                right: 0,
+                                top: 0,
+                                child: AppIcon(
                                   icon: Icons.circle,
                                   size: Dimensions.height20,
                                   iconColor: Colors.transparent,
                                   backgroundColor: mainColor,
                                 ),
-                            )
+                              )
                             : Container(),
-
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(
-                          right: 5,
-                          top:3,
-                          child: BigText(
-                            text: Get.find<PopularProductController>().totalItems.toString(),
-                            size: Dimensions.height12,
-                            color: Colors.white,
-                          ),
-                        )
+                                right: 5,
+                                top: 3,
+                                child: BigText(
+                                  text: Get.find<PopularProductController>()
+                                      .totalItems
+                                      .toString(),
+                                  size: Dimensions.height12,
+                                  color: Colors.white,
+                                ),
+                              )
                             : Container(),
                       ],
                     );
@@ -160,7 +161,7 @@ class PopularFoodDetail extends StatelessWidget {
                         onTap: () {
                           popularProduct.setQuantity(false);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.remove,
                           color: signColor,
                         ),
@@ -176,33 +177,36 @@ class PopularFoodDetail extends StatelessWidget {
                         onTap: () {
                           popularProduct.setQuantity(true);
                         },
-                        child: Icon(
+                        child: const Icon(
+
                           Icons.add,
                           color: signColor,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.height16,
-                      bottom: Dimensions.height16,
-                      left: Dimensions.width16,
-                      right: Dimensions.width16),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.height20),
-                      color: mainColor),
-                  child: GestureDetector(
-                    onTap: () {
-                      popularProduct.addItem(product);
-                    },
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: mainColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.height20))),
+                  onPressed: () {
+                    popularProduct.addItem(product);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height16,
+                        bottom: Dimensions.height16,
+                    ),
                     child: BigText(
                       text: "\$ ${product.price} | Add to cart",
                       color: Colors.white,
                     ),
                   ),
-                )
+                ),
+                // )
               ],
             ),
           );
